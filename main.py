@@ -164,6 +164,6 @@ while True:
     time.sleep(delay)
 
 
-client.run("ODU3MjgzMTg0NDU3OTQxMDMz.YNNVLg.f0U-VebidpvHe-XEVPbvhamoZwI")
+client.run("</>")
 
 
