@@ -137,4 +137,4 @@ while True:
     time.sleep(30)
 
 
-client.run("ODU3MjgzMTg0NDU3OTQxMDMz.YNNVLg.f0U-VebidpvHe-XEVPbvhamoZwI")
+client.run("</>")
