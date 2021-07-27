@@ -1,0 +1,1 @@
+0.0.1: Updated webhooks to properly send out when not in asynchronous function, created customisation via a second JSON file.
