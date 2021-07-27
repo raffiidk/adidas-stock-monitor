@@ -35,7 +35,7 @@ def checkstock(): #Check stock and return the stock number as well as the produc
             thumbnail_url = stockResponse['data']['products']['items'][0]['variants'][0]['product']['thumbnail']['url']
 
             #webhook = DiscordWebhook(url='https://discord.com/api/webhooks/860749812881817600/TR_-viEKr6JpoBYhiLY5o4FXb23NCQom3wspWV9MymHRhJEebXpVsT9EPq-gnoZlmyae')
-            webhook = DiscordWebhook(url='https://canary.discord.com/api/webhooks/869427444204052522/Eq2xiSgC0pvCYsLFWmf8WPf4zp3wfiiEDV6TUORK3K1xf5tK0UIG2rlmEXw-J40jgx_b')     
+            webhook = DiscordWebhook(url=URL)     
             Embed = DiscordEmbed(title='Adidas Indonesia Stock Checker',description="",colour='#ff0000')
             Embed.add_embed_field(name='Product Name', value=productName, inline=False)
             Embed.add_embed_field(name='Product Link', value=base_url+productUrl, inline=False)
@@ -58,7 +58,7 @@ def checkstock(): #Check stock and return the stock number as well as the produc
             webhook.add_embed(Embed)
             #response = webhook.execute()
             
-            monitorChannel = client.get_channel(797073002143023124)
+            monitorChannel = client.get_channel(wChannel)
             client.loop.create_task(monitorChannel.send(webhook))
 
             break
@@ -67,7 +67,7 @@ def checkstock(): #Check stock and return the stock number as well as the produc
             
             stock = "null"
             #webhook = DiscordWebhook(url='https://discord.com/api/webhooks/860749812881817600/TR_-viEKr6JpoBYhiLY5o4FXb23NCQom3wspWV9MymHRhJEebXpVsT9EPq-gnoZlmyae')
-            webhook = DiscordWebhook(url='https://canary.discord.com/api/webhooks/869427444204052522/Eq2xiSgC0pvCYsLFWmf8WPf4zp3wfiiEDV6TUORK3K1xf5tK0UIG2rlmEXw-J40jgx_b')
+            webhook = DiscordWebhook(url=URL)
             embed = DiscordEmbed(title='Adidas Indonesia Stock Checker',description="",colour='#ff0000')
             embed.add_embed_field(name='Product not loaded', value="Please try another SKU", inline=False)
             embed.set_timestamp()
@@ -75,7 +75,7 @@ def checkstock(): #Check stock and return the stock number as well as the produc
             webhook.add_embed(embed)
             #response = webhook.execute()
 
-            monitorChannel = client.get_channel(797073002143023124)
+            monitorChannel = client.get_channel(wChannel)
             client.loop.create_task(monitorChannel.send(webhook))
 
 
@@ -102,7 +102,7 @@ def check(last,checkval): #Check for a change in the latest stock reading and th
         return changeDetected
 
 def stockchange(url): #Actions upon stock change detected
-    webhook = DiscordWebhook(url='https://canary.discord.com/api/webhooks/869427444204052522/Eq2xiSgC0pvCYsLFWmf8WPf4zp3wfiiEDV6TUORK3K1xf5tK0UIG2rlmEXw-J40jgx_b')
+    webhook = DiscordWebhook(url=URL)
     embed = DiscordEmbed(title='Adidas Indonesia Stock Checker',description="",colour='#ff0000')
     embed.add_embed_field(name='STOCK CHANGE DETECETED', value="Please try another SKU", inline=False)
     embed.set_timestamp()
@@ -110,7 +110,7 @@ def stockchange(url): #Actions upon stock change detected
     webhook.add_embed(embed)
     #response = webhook.execute()
 
-    monitorChannel = client.get_channel(797073002143023124)
+    monitorChannel = client.get_channel(wChannel)
     client.loop.create_task(monitorChannel.send(webhook))
 
 
@@ -121,12 +121,15 @@ def getsettings():
         jsonObj = json.load(f)
         delay = jsonObj["delay"]
         sku = jsonObj["sku"]
+        webhookUrl = jsonObj["url"]
+        webhookChannel = jsonObj["channel"]
+        f.close()
 
 
-    return delay,sku
+    return delay,sku,webhookUrl,webhookChannel
 
 client = discord.Client()
-delay,sku = getsettings()
+delay,sku,URL,wChannel = getsettings()
 
 jsonFile = "data.json"
 
