@@ -1,0 +1,2 @@
+Check for stock by SKU on adidas.co.id. Requires "settings.json" file with delay and SKU, requires "data.json" with empty "history" list as the only key:value pair. 
+Post request endpoint is thanks to stephen#1609 - work solicited by him.
