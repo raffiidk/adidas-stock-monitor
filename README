@@ -1,1 +1,2 @@
 0.0.1: Updated webhooks to properly send out when not in asynchronous function, created customisation via a second JSON file.
+0.0.2: Added adidas.co.uk with equal functionality to adidas.co.id.
