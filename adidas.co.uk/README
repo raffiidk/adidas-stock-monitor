@@ -1,0 +1,1 @@
+Check for stock by SKU on adidas.co.id. Requires "settings.json" file with delay and SKU, requires "data.json" with empty "history" list as the only key:value pair. Requires Indonesian IP with item in cart on the same IP to request stock successfully. 
