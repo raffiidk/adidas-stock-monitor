@@ -1,2 +1,3 @@
 0.0.1: Updated webhooks to properly send out when not in asynchronous function, created customisation via a second JSON file.
 0.0.2: Added adidas.co.uk with equal functionality to adidas.co.id.
+0.0.3: Added autofill of billing address as stock is detected, window is opened to complete checkout following this. Set info in exampleData variable.
